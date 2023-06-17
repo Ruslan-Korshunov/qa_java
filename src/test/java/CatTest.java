@@ -25,7 +25,7 @@ public class CatTest {
     }
 
     @Test
-    public void testGetFood_Success() throws Exception {
+    public void testGetFoodSuccess() throws Exception {
         Cat cat = new Cat(feline);
         // Предполагаемый результат
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");

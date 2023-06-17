@@ -32,7 +32,6 @@ public class LionTest {
     public void testEatMeat() throws Exception {
         Lion lion = new Lion("Самец", feline);
         List<String> mealList = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(feline.getFood("Хищник")).thenReturn(mealList);
         List<String> food = lion.getFood();
         // Проверяем, что список еды содержит ожидаемые значения
         assertEquals(food, mealList);
