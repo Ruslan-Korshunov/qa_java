@@ -2,8 +2,7 @@ package com.example;
 
 import java.util.List;
 
-public class Lion extends Animal implements Predator{
-
+public class Lion {
 
     boolean hasMane;
 
@@ -13,25 +12,21 @@ public class Lion extends Animal implements Predator{
         } else if ("Самка".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
+            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
         }
     }
 
+    Feline feline = new Feline();
 
-
-    public static int getKittens() {
-        return 1;
-    }
-    public int getKittens(int kittensCount) {
-        return kittensCount;
+    public int getKittens() {
+        return feline.getKittens();
     }
 
     public boolean doesHaveMane() {
         return hasMane;
     }
 
-    @Override
-    public List<String> eatMeat() throws Exception {
-        return getFood("Хищник");
+    public List<String> getFood() throws Exception {
+        return feline.getFood("Хищник");
     }
 }
