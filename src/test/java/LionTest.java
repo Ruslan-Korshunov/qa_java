@@ -40,9 +40,9 @@ public class LionTest {
     }
 
     @Test
-    public void testLionConstructorInvalidSex() throws Exception {
+    public void testLionConstructorInvalidSex() {
         try {
-            Lion lion = new Lion("INVALID");
+            new Lion("INVALID");
             fail("Ожидалось выбрасывание исключения");
         } catch (Exception e) {
             assertEquals("Используйте допустимые значения пола животного - самец или самка", e.getMessage());
@@ -60,8 +60,8 @@ public class LionTest {
 
     @Test
     public void testGetKittensWithArgument() throws Exception {
-        Lion feline = new Lion("Самка");
-        int kittens = feline.getKittens(3);
+        Lion lion = new Lion("Самка");
+        int kittens = lion.getKittens(3);
 
         // Проверяем, что значение kittens равно 3
         assertEquals(3, kittens);
