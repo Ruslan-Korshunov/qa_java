@@ -51,7 +51,7 @@ public class LionTest {
 
     @Test
     public void testGetKittens() throws Exception {
-        Lion lion = new Lion("Самец");
+        new Lion("Самец");
         int kittens = Lion.getKittens();
 
         // Проверяем, что значение kittens равно 1
