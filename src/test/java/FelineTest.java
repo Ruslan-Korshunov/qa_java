@@ -1,17 +1,14 @@
 import com.example.Feline;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
-    @Mock
-    Feline feline;
 
     @Test
     public void testGetFamilyReturnsCats(){
@@ -42,10 +39,10 @@ public class FelineTest {
     }
     @Test
     public void testEatMeat() throws Exception {
-        List<String> meal_list = List.of("Животные", "Птицы", "Рыбы");
-        Mockito.when(feline.eatMeat()).thenReturn(meal_list);
+        Feline feline = new Feline();
+        List<String> mealList = List.of("Животные", "Птицы", "Рыба");
         List<String> food = feline.eatMeat();
         // Проверяем, что список еды содержит ожидаемые значения
-        assertEquals(food, meal_list);
+        assertEquals(food, mealList);
     }
 }
