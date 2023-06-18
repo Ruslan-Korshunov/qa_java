@@ -3,7 +3,6 @@ import com.example.Feline;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -13,8 +12,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
-    @Spy
-    Feline feline = new Feline();
+    @Mock
+    Feline feline;
 
 
     @Test
@@ -26,7 +25,7 @@ public class CatTest {
 
     @Test
     public void testGetFoodSuccess() throws Exception {
-        Cat cat = new Cat(feline);
+        Cat cat = new Cat(new Feline());
         // Предполагаемый результат
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
 
