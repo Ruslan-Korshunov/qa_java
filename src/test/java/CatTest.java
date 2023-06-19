@@ -1,6 +1,5 @@
 import com.example.Cat;
 import com.example.Feline;
-import com.example.Predator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -13,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
-
     @Mock
     Feline feline;
 
@@ -26,22 +24,12 @@ public class CatTest {
 
     @Test
     public void testGetFoodSuccess() throws Exception {
-        // Создание стаба для интерфейса Predator
-        class PredatorStub implements Predator {
-            @Override
-            public List<String> eatMeat() {
-                return List.of("Животные", "Птицы", "Рыба");
-            }
-        }
-
-        // Создание объекта Cat с моком в качестве параметра
-        Cat cat = new Cat(feline);
-
-        // Установка поведения мока
-        Mockito.when(cat.getFood()).thenReturn(new PredatorStub().eatMeat());
-        // Ожидаемый результат
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
 
+        // Установка поведения мока
+        Mockito.when(feline.eatMeat()).thenReturn(expectedFood);
+
+        Cat cat = new Cat(feline);
         // Получение фактического результата
         List<String> actualFood = cat.getFood();
 
