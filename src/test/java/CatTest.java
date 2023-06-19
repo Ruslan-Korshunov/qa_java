@@ -1,8 +1,10 @@
 import com.example.Cat;
 import com.example.Feline;
+import com.example.Predator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -15,7 +17,6 @@ public class CatTest {
     @Mock
     Feline feline;
 
-
     @Test
     public void testGetSoundReturnsMeow() {
         Cat cat = new Cat(feline);
@@ -25,8 +26,20 @@ public class CatTest {
 
     @Test
     public void testGetFoodSuccess() throws Exception {
-        Cat cat = new Cat(new Feline());
-        // Предполагаемый результат
+        // Создание стаба для интерфейса Predator
+        class PredatorStub implements Predator {
+            @Override
+            public List<String> eatMeat() {
+                return List.of("Животные", "Птицы", "Рыба");
+            }
+        }
+
+        // Создание объекта Cat с моком в качестве параметра
+        Cat cat = new Cat(feline);
+
+        // Установка поведения мока
+        Mockito.when(cat.getFood()).thenReturn(new PredatorStub().eatMeat());
+        // Ожидаемый результат
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
 
         // Получение фактического результата
